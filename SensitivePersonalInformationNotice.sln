@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensitivePersonalInformationNotice", "SensitivePersonalInformationNotice\SensitivePersonalInformationNotice.csproj", "{FE3A00A0-3A36-4C74-A943-261E5C43EC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensitivePersonalInformationNotice", "SensitivePersonalInformationNotice\SensitivePersonalInformationNotice.csproj", "{FE3A00A0-3A36-4C74-A943-261E5C43EC7B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeResume.Models", "CakeResume.Models\CakeResume.Models.csproj", "{BE95BCC2-D147-49D1-9AB8-955EADFA47F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeResume.DataAccess", "CakeResume.DataAccess\CakeResume.DataAccess.csproj", "{1DEFC254-2223-47A2-AEBC-2E3FBA77ED2C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeResume.Business", "CakeResume.Business\CakeResume.Business.csproj", "{7DEC620D-7CCD-4640-B0EA-CEA702E904B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{897AD963-E1F3-4AAD-852A-9478CE9F4E0F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
