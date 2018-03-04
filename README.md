@@ -3,7 +3,7 @@
 這是關於敏感個人資訊通知，目前有實作 CakeResume 的履歷分析並將敏感的個資通知該 User Email。
 
 ## Getting Started
-這個專案是使用 .NET Core Console、.NET Standard 2.0、EF Core 2.0、Dapper 開發，並且包含簡單的三層式架構、 Dependency Injection、Repository Pattern，大多都是練習性質，當然不用這麼麻煩一樣能做到履歷的個資提醒通知功能。
+這個專案是使用 .NET Core Console、.NET Standard 2.0、EF Core 2.1 Preview 1、Dapper 開發，並且包含簡單的三層式架構、 Dependency Injection、Repository Pattern，大多都是練習性質，當然不用這麼麻煩一樣能做到履歷的個資提醒通知功能。
 
 ### 環境
 建議使用 Visual Studio 2017 或 Visual Studio Code(需安裝C#擴充套件)，來開啟此專案，若使用 VS 2017 開啟專案即可建置。
