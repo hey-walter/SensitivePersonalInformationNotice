@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace CakeResume.Business.Services
 {
@@ -98,11 +99,17 @@ namespace CakeResume.Business.Services
 				{
 					// 爬取新的履歷項目
 					var userWithItem = _itemService.GetUserWithItem(todoItem.ItemId);
-					if (userWithItem != null)
+					using (var ts = new TransactionScope())
 					{
-						_userService.AddUserWithItem(userWithItem);
+						if (userWithItem != null)
+						{
+							_userService.AddUserWithItem(userWithItem);
+						}
+
+						_todoItemService.Remove(todoItem);
+
+						ts.Complete();
 					}
-					_todoItemService.Remove(todoItem);
 				}
 				catch (Exception ex)
 				{
@@ -132,18 +139,24 @@ namespace CakeResume.Business.Services
 				{
 					// 取得這項目的相似之處履歷項目
 					var similarities = _itemService.GetSimilarities(item.ItemId);
-					foreach (var userWithItem in similarities)
+
+					using (var ts = new TransactionScope())
 					{
-						// 將尚未記錄過的履歷儲存起來
-						var similaritiesItem = userWithItem.Items.FirstOrDefault();
-						if (!_itemRepo.Exists(x => x.ItemId == similaritiesItem.ItemId))
+						foreach (var userWithItem in similarities)
 						{
-							_userService.AddUserWithItem(userWithItem);
+							// 將尚未記錄過的履歷儲存起來
+							var similaritiesItem = userWithItem.Items.FirstOrDefault();
+							if (!_itemRepo.Exists(x => x.ItemId == similaritiesItem.ItemId))
+							{
+								_userService.AddUserWithItem(userWithItem);
+							}
 						}
+						// 拜訪完成註記
+						item.LastAccessSimilaritiesTime = DateTime.Now;
+						_itemRepo.Update(item);
+
+						ts.Complete();
 					}
-					// 拜訪完成註記
-					item.LastAccessSimilaritiesTime = DateTime.Now;
-					_itemRepo.Update(item);
 				}
 				catch (Exception ex)
 				{
